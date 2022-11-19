@@ -1,8 +1,5 @@
 from Vision import *
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 
 if __name__ == '__main__':
 	vid1 = "lanes_clip.mp4"
@@ -33,13 +30,11 @@ if __name__ == '__main__':
 		masked = BITWISE_and(frame,mask)
 		mask2 = np.zeros(masked.shape[:2], dtype="uint8") #Rectangular mask
 		cv2.rectangle(mask2, (0, 250), (500, 500), 255, -1)
-<<<<<<< Updated upstream
 		cv2.imshow("Rectangular Mask", mask2)
 
-=======
+
 		# cv2.imshow("Rectangular Mask", mask2)
-		
->>>>>>> Stashed changes
+
 		# cropped out
 		masked = cv2.bitwise_and(masked, masked, mask=mask2)
 
