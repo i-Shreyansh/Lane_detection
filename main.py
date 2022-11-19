@@ -1,13 +1,20 @@
 from Vision import *
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 if __name__ == '__main__':
 	vid1 = "lanes_clip.mp4"
 	vid2 = "Road vid - Made with Clipchamp.mp4"
 	path = vid2
+
+
 	vid = cv2.VideoCapture(path)
-	ScrollBar()
+
+	# ScrollBar()
 	crop_mask = np.zeros(shape=(500,500,3))
+
 	while(True):
 		ret, frame = vid.read()
 		if not ret:
@@ -16,7 +23,7 @@ if __name__ == '__main__':
 
 		frame  = imgResize(frame,500,500)
 
-		values = Values()
+		# values = Values()
 		#values = [0.0 ,89.7 ,0.0 ,161.6, 201.1, 255.0]
 		values = [0.0, 179.0, 0.0, 30.6, 151.5, 255.0]# white lane filter
 		
@@ -26,14 +33,18 @@ if __name__ == '__main__':
 		masked = BITWISE_and(frame,mask)
 		mask2 = np.zeros(masked.shape[:2], dtype="uint8") #Rectangular mask
 		cv2.rectangle(mask2, (0, 250), (500, 500), 255, -1)
+<<<<<<< Updated upstream
 		cv2.imshow("Rectangular Mask", mask2)
 
+=======
+		# cv2.imshow("Rectangular Mask", mask2)
+		
+>>>>>>> Stashed changes
 		# cropped out
-		masked = cv2.bitwise_and(masked, masked, mask=mask)
+		masked = cv2.bitwise_and(masked, masked, mask=mask2)
 
 		gray = cv2.cvtColor(masked, cv2.COLOR_BGR2GRAY)
 		 
-		
 
 		edges = cv2.Canny(image=gray, threshold1=100, threshold2=200) 
 		img_blur = cv2.GaussianBlur(edges, (7,7), 0)
@@ -45,16 +56,15 @@ if __name__ == '__main__':
 			for line in lines:
 				x1,y1,x2,y2 = line[0]
 				cv2.line(Detection,(x1,y1),(x2,y2),(0,255,0),5)
-				
-		cv2.imshow('frame1',frame)
-		cv2.imshow('frame2',Detection)
-		cv2.imshow('frame3',mask)
-		cv2.imshow('frame4',masked)
-		
-		
-		
 		
 
+		
+
+		# cv2.imshow('frame1',frame)
+		cv2.imshow('Lane detection',Detection)
+		# cv2.imshow('frame3',mask)
+		# cv2.imshow('Lane detection',masked)
+	
 		if cv2.waitKey(1) &  0xFF == ord('q'):
 			break
 	vid.release()
