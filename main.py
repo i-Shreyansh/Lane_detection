@@ -10,6 +10,7 @@ def start_clicked():
 	vid1 = "lanes_clip.mp4"
 	vid2 = "Road vid - Made with Clipchamp.mp4"
 	path = vid2
+
 	global vid
 	vid = cv2.VideoCapture(path)
 	
